@@ -19,8 +19,10 @@ spec:
       prune: {{ .Values.argoApplication.prune }}
       selfHeal: {{ .Values.argoApplication.selfHeal }}
     syncOptions:
-      {{- range .Values.argoApplication.syncOptions }}
-      - {{ . }}
-      {{- end }}
+      - CreateNamespace=true
+    hooks:
+      - type: SyncFail
+        command: ["/bin/sh", "-c"]
+        args: ["echo SyncFail hook executed"]
 {{- end }}
 
