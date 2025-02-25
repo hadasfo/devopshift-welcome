@@ -11,3 +11,8 @@ argoApplication:
   namespace: default
   prune: true
   selfHeal: true
+  syncOptions:
+    - CreateNamespace=true
+    - ApplyOutOfSyncOnly=true
+    - PrunePropagationPolicy=foreground
+    - Validate=false
