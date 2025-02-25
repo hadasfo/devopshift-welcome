@@ -18,5 +18,9 @@ spec:
     automated:
       prune: {{ .Values.argoApplication.prune }}
       selfHeal: {{ .Values.argoApplication.selfHeal }}
+    syncOptions:
+      {{- range .Values.argoApplication.syncOptions }}
+      - {{ . }}
+      {{- end }}
 {{- end }}
 
